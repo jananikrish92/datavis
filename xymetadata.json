@@ -1,0 +1,70 @@
+[
+  {
+    "x": "Post Month",
+    "graph": "Scatter Plot"
+  },
+  {
+    "x": "Post Weekday",
+    "graph": "Scatter Plot"
+  },
+  {
+    "x": "Post Month",
+    "graph": "Multi Scatter"
+  },
+  {
+    "x": "Post Weekday",
+    "graph": "Multi Scatter"
+  },
+  {
+    "x": "Post Hour",
+    "graph": "Multi Scatter"
+  },
+  {
+    "x": "Post Month",
+    "graph": "Heat Map"
+  },
+  {
+    "x": "Post Hour",
+    "graph": "Heat Map"
+  },
+  {
+    "x": "Type",
+    "graph": "Histogram"
+  },
+  {
+    "x": "Paid",
+    "graph": "Histogram"
+  },
+  {
+    "x": "Category",
+    "graph": "Histogram"
+  },
+  {
+    "x": "Post Hour",
+    "graph": "Histogram"
+  },
+  {
+    "x": "Post Month",
+    "graph": "Histogram"
+  },
+  {
+    "x": "Post Weekday",
+    "graph": "Histogram"
+  },
+  {
+    "x": "Lifetime Post Total Reach",
+    "graph": "Line"
+  },
+  {
+    "x": "Post Hour",
+    "graph": "Line"
+  },
+  {
+    "x": "Post Month",
+    "graph": "Line"
+  },
+  {
+    "x": "Post Weekday",
+    "graph": "Line"
+  }
+]

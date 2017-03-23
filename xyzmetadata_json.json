@@ -1,0 +1,410 @@
+[
+{ "x":"Post Month",
+  "y":"Post Weekday",
+  "z":"Paid",
+  "graph":"Scatter Plot"
+},
+{ "x":"Post Month",
+  "y":"Post Hour",
+  "z":"Paid",
+  "graph":"Scatter Plot"
+},
+{ "x":"Post Weekday",
+  "y":"Post Hour",
+  "z":"Paid",
+  "graph":"Scatter Plot"
+},
+{ "x":"Post Month",
+  "y":"Post Weekday",
+  "z":"Category",
+  "graph":"Scatter Plot"
+},
+{ "x":"Post Month",
+  "y":"Post Hour",
+  "z":"Category",
+  "graph":"Scatter Plot"
+},
+{ "x":"Post Weekday",
+  "y":"Post Hour",
+  "z":"Category",
+  "graph":"Scatter Plot"
+},
+{
+  "x":"Post Month",
+  "y":"Post Hour",
+  "z":"Category",
+  "graph":"Heat Map"
+},
+{
+  "x":"Post Month",
+  "y":"Post Hour",
+  "z":"Paid",
+  "graph":"Heat Map"
+},
+{
+  "x":"Post Month",
+  "y":"Post Hour",
+  "z":"comment",
+  "graph":"Heat Map"
+},
+{
+  "x":"Post Month",
+  "y":"Post Weekday",
+  "z":"Category",
+  "graph":"Heat Map"
+},
+{
+  "x":"Post Month",
+  "y":"Post Weekday",
+  "z":"Paid",
+  "graph":"Heat Map"
+},
+{
+  "x":"Post Month",
+  "y":"Post Weekday",
+  "z":"comment",
+  "graph":"Heat Map"
+},
+{
+  "x":"Post Hour",
+  "y":"Post Weekday",
+  "z":"Category",
+  "graph":"Heat Map"
+},
+{
+  "x":"Post Hour",
+  "y":"Post Weekday",
+  "z":"Paid",
+  "graph":"Heat Map"
+},
+{
+  "x":"Post Hour",
+  "y":"Post Weekday",
+  "z":"comment",
+  "graph":"Heat Map"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post Total Reach",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post Total Reach",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post Total Reach",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post Total Impressions",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post Total Impressions",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post Total Impressions",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Engaged Users",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Engaged Users",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Engaged Users",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post Consumers",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post Consumers",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post Consumers",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post Consumptions",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post Consumptions",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post Consumptions",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post reach by people who like your Page",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post reach by people who like your Page",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Month",
+  "y":"Lifetime Post reach by people who like your Page",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post Total Reach",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post Total Reach",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post Total Reach",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post Total Impressions",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post Total Impressions",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post Total Impressions",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Engaged Users",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Engaged Users",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Engaged Users",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post Consumers",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post Consumers",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post Consumers",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post Consumptions",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post Consumptions",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post Consumptions",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post reach by people who like your Page",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post reach by people who like your Page",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Hour",
+  "y":"Lifetime Post reach by people who like your Page",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post Total Reach",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post Total Reach",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post Total Reach",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post Total Impressions",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post Total Impressions",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post Total Impressions",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Engaged Users",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Engaged Users",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Engaged Users",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post Consumers",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post Consumers",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post Consumers",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post Consumptions",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post Consumptions",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post Consumptions",
+  "z":"Category",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post reach by people who like your Page",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post reach by people who like your Page",
+  "z":"Type",
+  "graph":"Multi Scatter"
+},
+{
+  "x":"Post Weekday",
+  "y":"Lifetime Post reach by people who like your Page",
+  "z":"Category",
+  "graph":"Multi Scatter"
+}
+]

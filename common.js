@@ -41,11 +41,11 @@ function initialiseGraphVariables(){
 	heatxSel = '';
 	heatySel = '';
 	heatzSel = '';
-  multixSel = '';
-  multiySel = '';
-  multizSel = '';
-  piexSel = '';
-  pieySel = '';
+	multixSel = '';
+	multiySel = '';
+	multizSel = '';
+	piexSel = '';
+	pieySel = '';
 }
 
 
@@ -53,30 +53,29 @@ function initialiseGraphVariables(){
 
 function renderGraph(){
 	initialiseGraphVariables();
-        var $xcoordinateSel = $("#xcoordinate option:selected").text();
-        var $ycoordinateSel = $("#ycoordinate option:selected").text();
-        var $zcoordinateSel = $("#zcoordinate option:selected").text();
+    var $xcoordinateSel = $("#xcoordinate option:selected").text();
+    var $ycoordinateSel = $("#ycoordinate option:selected").text();
+    var $zcoordinateSel = $("#zcoordinate option:selected").text();
 
-        if($xcoordinateSel == 'Select'){
-            alert('Please Select the x coordinate ');
-            return;
-        }
-        if($ycoordinateSel == 'Select'){
-          alert('Please Select the y-coordinate ');
-          return;
-        }
-        if( $("#graphtype option:selected").text() == 'Scatter Plot' ||  $("#graphtype option:selected").text() == 'Heat Map' || $("#graphtype option:selected").text() == 'Multiscatter'){
-          if($zcoordinateSel == 'Select'){
-            alert('Please Select the z-coordinate for '+$("#graphtype option:selected").text());
-            return;
-          }
-        }
+    if($xcoordinateSel == 'Select'){
+        alert('Please Select the x coordinate ');
+        return;
+    }
+    if($ycoordinateSel == 'Select'){
+      alert('Please Select the y-coordinate ');
+      return;
+    }
+    if( $("#graphtype option:selected").text() == 'Scatter Plot' ||  $("#graphtype option:selected").text() == 'Heat Map' || $("#graphtype option:selected").text() == 'Multiscatter'){
+      if($zcoordinateSel == 'Select'){
+        alert('Please Select the z-coordinate for '+$("#graphtype option:selected").text());
+        return;
+      }
+    }
 
-        map[$("#graphtype option:selected").text()] = $xcoordinateSel+","+$ycoordinateSel+","+$zcoordinateSel;
+    map[$("#graphtype option:selected").text()] = $xcoordinateSel+","+$ycoordinateSel+","+$zcoordinateSel;
        
-for(var key in map)
-{
-    alert("key==>  "+key);
+	for(var key in map)
+	{
 		if (key === 'Scatter Plot'){
 			scatterxSel = map[key].split(',')[0];
 			scatterySel = map[key].split(',')[1];
@@ -92,17 +91,16 @@ for(var key in map)
 			heatySel = map[key].split(',')[1];
 			heatzSel = map[key].split(',')[2];		
 		}
-    else if (key === 'Multiscatter'){
-      multixSel = map[key].split(',')[0];
-      multiySel = map[key].split(',')[1];
-      multizSel = map[key].split(',')[2];    
-    }		
-     else if (key === 'Pie'){
-      piexSel = map[key].split(',')[0];
-      pieySel = map[key].split(',')[1];  
-    }   
-}
-	alert(heatxSel+","+heatySel+","+heatzSel);
+		else if (key === 'Multiscatter'){
+		      multixSel = map[key].split(',')[0];
+		      multiySel = map[key].split(',')[1];
+		      multizSel = map[key].split(',')[2];    
+		}		
+		     else if (key === 'Pie'){
+		      piexSel = map[key].split(',')[0];
+		      pieySel = map[key].split(',')[1];  
+		}   
+	}
 	renderAllGraphs();
 }
 
@@ -154,21 +152,18 @@ function renderAllGraphs(){
 		lineDim = ndx.dimension(function(d) {return loadDimensions(d,linexSel);}),
 		lineGroup = lineDim.group().reduceSum(function(d) {return loadDimensions(d,lineySel);}),
 		histDim = ndx.dimension(function(d) {return loadDimensions(d,histxSel);}),
-    histGroup = histDim.group().reduceCount(function(d){return loadDimensions(d,histySel);}),
-      typeDim  = ndx.dimension(function(d) {return loadDimensions(d,piexSel);}),
-      likePertype = typeDim.group().reduceSum(function(d) {return loadDimensions(d,pieySel);}),
-    multiscatterDim =  ndx.dimension(function(d){return loadMultiDimensions(d,multizSel,multixSel);}),
-    multiscatterGroup = multiscatterDim.group().reduceSum(function(d) {return loadDimensions(d,multiySel);})
-      runDim = ndx.dimension(function(d) { return [+d["Post Month"], +d["Post Hour"]]; }),
-      runGroup = runDim.group().reduceSum(function(d) { return +d["Paid"]; });
-    var symbolScale = d3.scale.ordinal().range(d3.svg.symbolTypes);
+    	histGroup = histDim.group().reduceCount(function(d){return loadDimensions(d,histySel);}),
+        typeDim  = ndx.dimension(function(d) {return loadDimensions(d,piexSel);}),
+        likePertype = typeDim.group().reduceSum(function(d) {return loadDimensions(d,pieySel);}),
+        multiscatterDim =  ndx.dimension(function(d){return loadMultiDimensions(d,multizSel,multixSel);}),
+        multiscatterGroup = multiscatterDim.group().reduceSum(function(d) {return loadDimensions(d,multiySel);})
+        runDim = ndx.dimension(function(d) { return [+d[heatxSel], +d[heatySel]]; }),
+        runGroup = runDim.group().reduceSum(function(d) { return +d[heatzSel]; });
+    	var symbolScale = d3.scale.ordinal().range(d3.svg.symbolTypes);
 		var symbolAccessor = function(d) {return symbolScale(d.key[0]); };
 	  
 
-/*
-    runDim = ndx.dimension(function(d) { return [+d[heatxSel], +d[heatySel]]; }),
-    runGroup = runDim.group().reduceSum(function(d) { return +d[heatzSel]; });*/
-    if(scatterxSel!='' && scatterySel !=''){
+   		if(scatterxSel!='' && scatterySel !=''){
 			scatterChart1 = dc.scatterPlot("#scatter1");	
 			renderScatter(scatterChart1,scatterxSel,scatterySel,scatterDim1,scatterGroup1);
 		}
@@ -184,34 +179,34 @@ function renderAllGraphs(){
 			HistChart  = dc.barChart("#HistChart");
 			renderHistogram(HistChart,histxSel,histySel,histDim,histGroup);
 		}
-    if(multixSel != '' && multiySel != '' && multizSel != ''){
-      multiscatterchart = dc.seriesChart("#multiscatter");
-      renderMultiscatter(multiscatterchart,multixSel,multiySel,multizSel,multiscatterDim,multiscatterGroup,symbolAccessor);
-    }
-   if(heatxSel != '' && heatySel != '' && heatzSel != ''){
-      heatChart = dc.heatMap("#heatMapChart");  
-      heatChart  .width(45 * 20 + 80)
-    .height(45 * 5 + 40)
-    .dimension(runDim)
-    .group(runGroup)
-    .keyAccessor(function(d) { return +d.key[0]; })
-    .valueAccessor(function(d) { return +d.key[1]; })
-    .colorAccessor(function(d) { return +d.value; })
-    .title(function(d) {
-        return "Post Month:   " + d.key[0] + "\n" +
-               "Post Hour:  " + d.key[1] + "\n" +
-               "Paid: " + d.value + " $";})
-    .colors(["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"])
-    .calculateColorDomain();
-  
-    }
-    if(piexSel != '' && pieySel != '')
-    {
-      typeRingChart   = dc.pieChart("#chart-ring-year")
-      renderPieChart(typeRingChart,piexSel,pieySel,typeDim,likePertype)
-    }
-  
-    dc.renderAll();
+	    if(multixSel != '' && multiySel != '' && multizSel != ''){
+	      multiscatterchart = dc.seriesChart("#multiscatter");
+	      renderMultiscatter(multiscatterchart,multixSel,multiySel,multizSel,multiscatterDim,multiscatterGroup,symbolAccessor);
+	    }
+	   if(heatxSel != '' && heatySel != '' && heatzSel != ''){
+	      heatChart = dc.heatMap("#heatMapChart");  
+	      heatChart  .width(45 * 20 + 80)
+	    .height(45 * 5 + 40)
+	    .dimension(runDim)
+	    .group(runGroup)
+	    .keyAccessor(function(d) { return +d.key[0]; })
+	    .valueAccessor(function(d) { return +d.key[1]; })
+	    .colorAccessor(function(d) { return +d.value; })
+	    .title(function(d) {
+	        return heatxSel+":   " + d.key[0] + "\n" +
+	               heatySel+":  " + d.key[1] + "\n" +
+	               heatzSel+": " + d.value + " $";})
+	    .colors(["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"])
+	    .calculateColorDomain();
+	  
+	    }
+	    if(piexSel != '' && pieySel != '')
+	    {
+	      typeRingChart   = dc.pieChart("#chart-ring-year")
+	      renderPieChart(typeRingChart,piexSel,pieySel,typeDim,likePertype)
+	    }
+	  
+    	dc.renderAll();
 	});	
 }
 
@@ -246,55 +241,92 @@ function loadMultiDimensions(d,x,y){
 	}
 }
 
-function loadCoordinates(){
-  alert("start");
+function loadxCoordinates(){
    var $select = $("#graphtype option:selected").text();
    $.ajax({
       type: 'GET',
       datatype:"jsonp",
       crossDomain: true,
       data: {graphType:$select},
-      url: "http://127.0.0.1:5000/fetchCoordinates",
+      url: "http://127.0.0.1:5000/fetchxCoordinates",
       success: function (responseData, textStatus, jqXHR) {
 
           var dbData = JSON.parse(responseData);
           var $xcoordinateSel = $('#xcoordinate');
-          var $ycoordinateSel = $('#ycoordinate');
-          var $zcoordinateSel = $('#zcoordinate');
           $('#xcoordinateDiv').css("display","block");
           $('#xcoordinateDiv').css("visibility","visible");
-          $('#ycoordinateDiv').css("display","block");
-          $('#ycoordinateDiv').css("visibility","visible");
-
-          if($select == 'Scatter Plot' || $select == 'Heat Map' || $select == 'Multiscatter'){
-            $('#zcoordinateDiv').css("display","block");
-            $('#zcoordinateDiv').css("visibility","visible");
-            $zcoordinateSel
-            .find('option')
-            .remove();
-            $zcoordinateSel.append('<option id="Select">Select</option>');
-          }else{
-            $('#zcoordinateDiv').css("display","none");
-            $('#zcoordinateDiv').css("visibility","hidden");
-          }
-          $xcoordinateSel
-          .find('option')
-          .remove();
-
-          $ycoordinateSel
+    	  $xcoordinateSel
           .find('option')
           .remove();
 
           $xcoordinateSel.append('<option id="Select">Select</option>');
-          $ycoordinateSel.append('<option id="Select">Select</option>');
-
+          
           $.each(dbData, function(key, val){
             $xcoordinateSel.append('<option id="' + val.x + '">' + val.x + '</option>');
+          });
+      }
+    });
+}
+
+function loadzCoordinates(){
+   var $select = $("#graphtype option:selected").text();
+   var $xCoordVal = $("#xcoordinate option:selected").text();
+   var $yCoordVal = $("#ycoordinate option:selected").text();
+   if($select == 'Scatter Plot' || $select == 'Heat Map' || $select == 'Multi Scatter'){
+	   $.ajax({
+	      type: 'GET',
+	      datatype:"jsonp",
+	      crossDomain: true,
+	      data: {graphType:$select,xCoord:$xCoordVal,yCoord:$yCoordVal},
+	      url: "http://localhost:5000/fetchzCoordinates",
+	      success: function (responseData, textStatus, jqXHR) {
+
+		  var dbData = JSON.parse(responseData);
+		  var $zcoordinateSel = $('#zcoordinate');
+		  $('#zcoordinateDiv').css("display","block");
+		  $('#zcoordinateDiv').css("visibility","visible");
+	    	  $zcoordinateSel
+		  .find('option')
+		  .remove();
+
+		  $zcoordinateSel.append('<option id="Select">Select</option>');
+		  
+		  $.each(dbData, function(key, val){
+		    $zcoordinateSel.append('<option id="' + val.z + '">' + val.z + '</option>');
+		  });
+	      }
+	    });
+   }else{
+	  var $zcoordinateSel = $('#zcoordinate');
+	  $('#zcoordinateDiv').css("display","none");
+	  $('#zcoordinateDiv').css("visibility","hidden");
+   }
+}
+
+function loadyCoordinates(){
+   var $select = $("#graphtype option:selected").text();
+   var $xCoordVal = $("#xcoordinate option:selected").text();
+
+   $.ajax({
+      type: 'GET',
+      datatype:"jsonp",
+      crossDomain: true,
+      data: {graphType:$select,xCoord:$xCoordVal},
+      url: "http://localhost:5000/fetchyCoordinates",
+      success: function (responseData, textStatus, jqXHR) {
+
+          var dbData = JSON.parse(responseData);
+          var $ycoordinateSel = $('#ycoordinate');
+          $('#ycoordinateDiv').css("display","block");
+          $('#ycoordinateDiv').css("visibility","visible");
+    	  $ycoordinateSel
+          .find('option')
+          .remove();
+
+          $ycoordinateSel.append('<option id="Select">Select</option>');
+          
+          $.each(dbData, function(key, val){
             $ycoordinateSel.append('<option id="' + val.y + '">' + val.y + '</option>');
-            if($select == 'Scatter Plot' || $select == 'Heat Map'  || $select == 'Multiscatter'){
-                $zcoordinateSel.append('<option id="' + val.z + '">' + val.z + '</option>');
-            }
-            alert("done appending!!");
           });
       }
     });

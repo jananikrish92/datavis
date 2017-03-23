@@ -1,0 +1,20 @@
+[
+  {
+    "graph": "Scatter Plot"
+  },
+  {
+    "graph": "Line"
+  },
+  {
+    "graph": "Heat Map"
+  },
+  {
+    "graph": "Histogram"
+  },
+  {
+    "graph": "Multi Scatter"
+  },
+  {
+    "graph": "Pie"
+  }
+]

@@ -20,21 +20,21 @@
 <div class="container-fluid">
 <div class="row">
   <div class="col-md-1"><span><label for ="graphtype"> <span>Graph Type :</span>
-  <select id="graphtype" onchange="loadCoordinates()">
+  <select id="graphtype" onchange="loadxCoordinates()">
     <option id="<Select>">Select</option>
   </select></label>
   <button type="button" id="renderGraph" onClick="renderGraph()">Render</button></span>
   </div>
   <div id="xcoordinateDiv" class="col-md-1" style="visibility:hidden;">
     <label for="xcoordinate"> <span>X-axis :</span>
-    <select id="xcoordinate">
+    <select id="xcoordinate" onchange="loadyCoordinates()">
       <option id="<Select>" selected>Select</option>
     </select>
     </label>
   </div>
   <div id="ycoordinateDiv"  class="col-md-1" style="visibility:hidden;">
     <label for="xcoordinate"> <span>Y-axis :</span>
-    <select id="ycoordinate">
+    <select id="ycoordinate" onchange="loadzCoordinates()">
       <option id="<Select>" selected>Select</option>
     </select>
     </label>
