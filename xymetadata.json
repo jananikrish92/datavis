@@ -1,70 +1,513 @@
-[
-  {
-    "x": "Post Month",
-    "graph": "Scatter Plot"
-  },
-  {
-    "x": "Post Weekday",
-    "graph": "Scatter Plot"
-  },
-  {
-    "x": "Post Month",
-    "graph": "Multi Scatter"
-  },
-  {
-    "x": "Post Weekday",
-    "graph": "Multi Scatter"
-  },
-  {
-    "x": "Post Hour",
-    "graph": "Multi Scatter"
-  },
-  {
-    "x": "Post Month",
-    "graph": "Heat Map"
-  },
-  {
-    "x": "Post Hour",
-    "graph": "Heat Map"
-  },
-  {
-    "x": "Type",
-    "graph": "Histogram"
-  },
-  {
-    "x": "Paid",
-    "graph": "Histogram"
-  },
-  {
-    "x": "Category",
-    "graph": "Histogram"
-  },
-  {
-    "x": "Post Hour",
-    "graph": "Histogram"
-  },
-  {
-    "x": "Post Month",
-    "graph": "Histogram"
-  },
-  {
-    "x": "Post Weekday",
-    "graph": "Histogram"
-  },
-  {
-    "x": "Lifetime Post Total Reach",
-    "graph": "Line"
-  },
-  {
-    "x": "Post Hour",
-    "graph": "Line"
-  },
-  {
-    "x": "Post Month",
-    "graph": "Line"
-  },
-  {
-    "x": "Post Weekday",
-    "graph": "Line"
-  }
-]
+[{ 
+      "x":"Lifetime Post Total Reach",
+      "y":"Lifetime Post Total Impressions",
+      "graph":"Line"
+    },
+    { "x":"Lifetime Post Total Reach",
+      "y":"Lifetime Engaged Users",
+      "graph":"Line"
+    },
+    { "x":"Lifetime Post Total Reach",
+      "y":"Lifetime Post Consumers",
+      "graph":"Line"
+    },
+    { "x":"Lifetime Post Total Reach",
+      "y":"Lifetime Post Consumptions",
+      "graph":"Line"
+    },
+    { "x":"Lifetime Post Total Reach",
+      "y":"Lifetime Post Impressions by people who have liked your Page",
+      "graph":"Line"
+    },
+    { "x":"Lifetime Post Total Reach",
+      "y":"Lifetime Post reach by people who like your Page",
+      "graph":"Line"
+    },
+    { "x":"Lifetime Post Total Reach",
+      "y":"Lifetime People who have liked your Page and engaged with your post",
+      "graph":"Line"
+    },
+    { "x":"Lifetime Post Total Reach",
+      "y":"comment",
+      "graph":"Line"
+    },
+    { "x":"Lifetime Post Total Reach",
+      "y":"Total Interactions",
+      "graph":"Line"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Total Reach",
+      "graph":"Line"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Total Impressions",
+      "graph":"Line"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Engaged Users",
+      "graph":"Line"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Consumers",
+      "graph":"Line"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Consumptions",
+      "graph":"Line"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Impressions by people who have liked your Page",
+      "graph":"Line"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post reach by people who like your Page",
+      "graph":"Line"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime People who have liked your Page and engaged with your post",
+      "graph":"Line"
+    },
+    { "x":"Post Weekday",
+      "y":"comment",
+      "graph":"Line"
+    },
+    { "x":"Post Weekday",
+      "y":"Total Interactions",
+      "graph":"Line"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post Total Reach",
+      "graph":"Line"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post Total Impressions",
+      "graph":"Line"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Engaged Users",
+      "graph":"Line"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post Consumers",
+      "graph":"Line"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post Consumptions",
+      "graph":"Line"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post Impressions by people who have liked your Page",
+      "graph":"Line"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post reach by people who like your Page",
+      "graph":"Line"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime People who have liked your Page and engaged with your post",
+      "graph":"Line"
+    },
+    { "x":"Post Hour",
+      "y":"comment",
+      "graph":"Line"
+    },
+    { "x":"Post Hour",
+      "y":"Total Interactions",
+      "graph":"Line"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Total Reach",
+      "graph":"Line"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Total Impressions",
+      "graph":"Line"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Engaged Users",
+      "graph":"Line"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Consumers",
+      "graph":"Line"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Consumptions",
+      "graph":"Line"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Impressions by people who have liked your Page",
+      "graph":"Line"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post reach by people who like your Page",
+      "graph":"Line"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime People who have liked your Page and engaged with your post",
+      "graph":"Line"
+    },
+    { "x":"Post Month",
+      "y":"comment",
+      "graph":"Line"
+    },
+    { "x":"Post Month",
+      "y":"Total Interactions",
+      "graph":"Line"
+    },
+    { "x":"Category",
+      "y":"Lifetime Post Total Reach",
+      "graph":"Histogram"
+    },
+    { "x":"Category",
+      "y":"Lifetime Post Total Impressions",
+      "graph":"Histogram"
+    },
+    { "x":"Category",
+      "y":"Lifetime Engaged Users",
+      "graph":"Histogram"
+    },
+    { "x":"Category",
+      "y":"Lifetime Post Consumers",
+      "graph":"Histogram"
+    },
+    { "x":"Category",
+      "y":"Lifetime Post Consumptions",
+      "graph":"Histogram"
+    },
+    { "x":"Category",
+      "y":"Lifetime Post Impressions by people who have liked your Page",
+      "graph":"Histogram"
+    },
+    { "x":"Category",
+      "y":"Lifetime Post reach by people who like your Page",
+      "graph":"Histogram"
+    },
+    { "x":"Category",
+      "y":"Lifetime People who have liked your Page and engaged with your post",
+      "graph":"Histogram"
+    },
+    { "x":"Category",
+      "y":"comment",
+      "graph":"Histogram"
+    },
+    { "x":"Category",
+      "y":"Total Interactions",
+      "graph":"Histogram"
+    },
+    { "x":"Category",
+      "y":"share",
+      "graph":"Histogram"
+    },
+    { "x":"Paid",
+      "y":"Lifetime Post Total Reach",
+      "graph":"Histogram"
+    },
+    { "x":"Paid",
+      "y":"Lifetime Post Total Impressions",
+      "graph":"Histogram"
+    },
+    { "x":"Paid",
+      "y":"Lifetime Engaged Users",
+      "graph":"Histogram"
+    },
+    { "x":"Paid",
+      "y":"Lifetime Post Consumers",
+      "graph":"Histogram"
+    },
+    { "x":"Paid",
+      "y":"Lifetime Post Consumptions",
+      "graph":"Histogram"
+    },
+    { "x":"Paid",
+      "y":"Lifetime Post Impressions by people who have liked your Page",
+      "graph":"Histogram"
+    },
+    { "x":"Paid",
+      "y":"Lifetime Post reach by people who like your Page",
+      "graph":"Histogram"
+    },
+    { "x":"Paid",
+      "y":"Lifetime People who have liked your Page and engaged with your post",
+      "graph":"Histogram"
+    },
+    { "x":"Paid",
+      "y":"comment",
+      "graph":"Histogram"
+    },
+    { "x":"Paid",
+      "y":"Total Interactions",
+      "graph":"Histogram"
+    },
+    { "x":"Paid",
+      "y":"share",
+      "graph":"Histogram"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post Total Reach",
+      "graph":"Histogram"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post Total Impressions",
+      "graph":"Histogram"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Engaged Users",
+      "graph":"Histogram"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post Consumers",
+      "graph":"Histogram"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post Consumptions",
+      "graph":"Histogram"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post Impressions by people who have liked your Page",
+      "graph":"Histogram"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post reach by people who like your Page",
+      "graph":"Histogram"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime People who have liked your Page and engaged with your post",
+      "graph":"Histogram"
+    },
+    { "x":"Post Hour",
+      "y":"comment",
+      "graph":"Histogram"
+    },
+    { "x":"Post Hour",
+      "y":"Total Interactions",
+      "graph":"Histogram"
+    },
+    { "x":"Post Hour",
+      "y":"share",
+      "graph":"Histogram"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Total Reach",
+      "graph":"Histogram"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Total Impressions",
+      "graph":"Histogram"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Engaged Users",
+      "graph":"Histogram"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Consumers",
+      "graph":"Histogram"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Consumptions",
+      "graph":"Histogram"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Impressions by people who have liked your Page",
+      "graph":"Histogram"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post reach by people who like your Page",
+      "graph":"Histogram"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime People who have liked your Page and engaged with your post",
+      "graph":"Histogram"
+    },
+    { "x":"Post Month",
+      "y":"comment",
+      "graph":"Histogram"
+    },
+    { "x":"Post Month",
+      "y":"Total Interactions",
+      "graph":"Histogram"
+    },
+    { "x":"Post Month",
+      "y":"share",
+      "graph":"Histogram"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Total Reach",
+      "graph":"Histogram"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Total Impressions",
+      "graph":"Histogram"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Engaged Users",
+      "graph":"Histogram"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Consumers",
+      "graph":"Histogram"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Consumptions",
+      "graph":"Histogram"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Impressions by people who have liked your Page",
+      "graph":"Histogram"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post reach by people who like your Page",
+      "graph":"Histogram"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime People who have liked your Page and engaged with your post",
+      "graph":"Histogram"
+    },
+    { "x":"Post Weekday",
+      "y":"comment",
+      "graph":"Histogram"
+    },
+    { "x":"Post Weekday",
+      "y":"Total Interactions",
+      "graph":"Histogram"
+    },
+    { "x":"Post Weekday",
+      "y":"share",
+      "graph":"Histogram"
+    },
+    { "x":"Type",
+      "y":"Lifetime Post Total Reach",
+      "graph":"Histogram"
+    },
+    { "x":"Type",
+      "y":"Lifetime Post Total Impressions",
+      "graph":"Histogram"
+    },
+    { "x":"Type",
+      "y":"Lifetime Engaged Users",
+      "graph":"Histogram"
+    },
+    { "x":"Type",
+      "y":"Lifetime Post Consumers",
+      "graph":"Histogram"
+    },
+    { "x":"Type",
+      "y":"Lifetime Post Consumptions",
+      "graph":"Histogram"
+    },
+    { "x":"Type",
+      "y":"Lifetime Post Impressions by people who have liked your Page",
+      "graph":"Histogram"
+    },
+    { "x":"Type",
+      "y":"Lifetime Post reach by people who like your Page",
+      "graph":"Histogram"
+    },
+    { "x":"Type",
+      "y":"Lifetime People who have liked your Page and engaged with your post",
+      "graph":"Histogram"
+    },
+    { "x":"Type",
+      "y":"comment",
+      "graph":"Histogram"
+    },
+    { "x":"Type",
+      "y":"Total Interactions",
+      "graph":"Histogram"
+    },
+    { "x":"Type",
+      "y":"share",
+      "graph":"Histogram"
+    },
+    { "x":"Post Month",
+      "y":"Post Weekday",
+      "graph":"Scatter Plot"
+    },
+    { "x":"Post Month",
+      "y":"Post Hour",
+      "graph":"Scatter Plot"
+    },
+    { "x":"Post Weekday",
+      "y":"Post Hour",
+      "graph":"Scatter Plot"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Engaged Users",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Engaged Users",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Engaged Users",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Consumers",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Consumers",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post Consumers",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Consumptions",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Consumptions",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post Consumptions",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post reach by people who like your Page",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post reach by people who like your Page",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post reach by people who like your Page",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Total Impressions",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Total Impressions",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Hour",
+      "y":"Lifetime Post Total Impressions",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Month",
+      "y":"Lifetime Post Total Reach",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Weekday",
+      "y":"Lifetime Post Total Reach",
+      "graph":"Multi Scatter"
+    },
+    { "x":"Post Month",
+      "y":"Post Hour",
+      "graph":"Heat Map"
+    },
+    { "x":"Post Month",
+      "y":"Post Weekday",
+      "graph":"Heat Map"
+    },
+    { "x":"Post Hour",
+      "y":"Post Weekday",
+      "graph":"Heat Map"
+    }]
