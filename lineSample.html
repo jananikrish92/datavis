@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dc.js - Line Chart Example</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/dc.css"/>>
+</head>
+<body>
+
+<div class="container">
+<script type="text/javascript" src="header.js"></script>
+<div id="test"></div>
+
+
+<script type="text/javascript" src="js/d3.js"></script>
+<script type="text/javascript" src="js/crossfilter.js"></script>
+<script type="text/javascript" src="js/dc.js"></script>
+
+<script type="text/javascript">
+var chart = dc.lineChart("#test");
+d3.csv("dataset.csv", function(error, data) {
+  data.forEach(function(x) {
+    x["Lifetime Post Total Reach"] = +x["Lifetime Post Total Reach"];
+  });
+  var ndx                 = crossfilter(data),
+      runDimension        = ndx.dimension(function(d) {return +d["Post Month"];}),
+      speedSumGroup       = runDimension.group().reduceSum(function(d) {return +d["Lifetime Post Consumers"];});
+  chart
+    .width(1000)
+    .height(480)
+    .x(d3.scale.linear().domain([0,12000]))
+    .elasticY(true)
+        .elasticX(true)
+    .renderArea(false)
+    .brushOn(false)
+    .renderDataPoints(true)
+    .clipPadding(10)
+    .yAxisLabel("Lifetime Post Total Reach")
+    .xAxisLabel("Lifetime Post Consumers")
+    .dimension(runDimension)
+    .group(speedSumGroup)
+    .margins({left:100,right:150,top:50,bottom:70})
+        .renderLabel(true)
+        .label(function (p) {
+            return p.key;
+        }) .renderTitle(true)
+        .title(function (p) {
+            return "Lifetime Post Total Reach :"+p.key+"\n"+"Lifetime Post Consumers:"+ p.value;     
+        });
+
+	chart.render();
+});
+</script>
+
+</div>
+</body>
+</html>

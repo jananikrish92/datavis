@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dc.js - Series Example</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/dc.css"/>
+</head>
+<body>
+<div id="container">
+<div id="test"></div>
+
+<script type="text/javascript" src="js/d3.js"></script>
+<script type="text/javascript" src="js/crossfilter.js"></script>
+<script type="text/javascript" src="js/dc.js"></script>
+<p>Click the button to trigger a function that will output "Hello World" in a p element with id="demo".</p>
+<input type="text" id="input1" value="x-axis"/>
+<input type="text" id="input2" value="y-axis"/>
+<button onclick="myFunction()">Click me</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    alert('hi');
+    var xAttribute = document.getElementById("input1");
+    var yAttribute = document.getElementById("input2");
+    alert(xAttribute.value+" "+yAttribute.value);
+    var chart = dc.lineChart("#test");
+    d3.csv("dataset.csv", function(error, data) {
+  /*    data.forEach(function(x) {
+        x["Lifetime Post Total Reach"] = +x["Lifetime Post Total Reach"];
+      });*/
+      var ndx                 = crossfilter(data),
+          runDimension        = ndx.dimension(function(d) {return +d[xAttribute.value];}),
+          speedSumGroup       = runDimension.group().reduceSum(function(d) {return +d[yAttribute.value];});
+      chart
+        .width(768)
+        .height(480)
+        .x(d3.scale.linear().domain([0,12]))
+        .renderArea(false)
+        .brushOn(false)
+        .renderDataPoints(true)
+        .clipPadding(10)
+        .yAxisLabel(yAttribute.value)
+        .dimension(runDimension)
+        .group(speedSumGroup)
+        .margins({left:100,right:5,top:10,bottom:30});
+
+    	chart.render();
+    });
+
+}
+</script>
+<!--
+<script type="text/javascript">
+
+var test = function(){
+  alert('hi');
+}
+function funcEvent()
+{
+
+  alert("eneter");
+  /*var chart = dc.barChart("#test");
+  var ndx = crossfilter(data);
+d3.csv("dataset.csv",function(data){
+var xAttribute = document.getElementById("input1");
+var yAttribute = document.getElementById("input2");
+var runDimension        = ndx.dimension(function(d) {return +d.xAttribute;}),
+var speedSumGroup       = runDimension.group().reduceSum(function(d) {return +d.yAttribute;});
+chart
+  .width(768)
+  .height(480)
+  .x(d3.scale.linear().domain([0,12]))
+  .renderArea(false)
+  .brushOn(true)
+  .renderDataPoints(true)
+  .clipPadding(10)
+  .yAxisLabel(yAttribute)
+  .dimension(runDimension)
+  .group(speedSumGroup)
+  .margins({left:100,right:5,top:10,bottom:30});
+  dc.renderAll();
+  */
+
+});
+}
+</script>
+<input type="text" id="input1" value="x-axis"/>
+<input type="text" id="input2" value="y-axis"/>
+<button id="button1" onclick="javascript:test();">renderAll</button>-->
+</div>
+</body>
+</html>

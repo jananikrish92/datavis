@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dc.js - Filtering Example</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/dc.css"/>
+</head>
+<body>
+
+<div class="container">
+<br>
+<div>
+<div id="chart-ring-year"></div>
+<div id="chart-hist-spend"></div>
+</div>
+<div>
+<div id="chart-row-spenders"></div>
+  <div id="test1"></div>
+  <div id="test2"></div>
+</div>
+<!--<div id="chart-bar-chart"></div>-->
+<div id="test"></div>
+<script type="text/javascript" src="js/d3.js"></script>
+<script type="text/javascript" src="js/crossfilter.js"></script>
+<script type="text/javascript" src="js/dc.js"></script>
+<script type="text/javascript">
+var typeRingChart   = dc.pieChart("#chart-ring-year"),
+    likeHistChart  = dc.barChart("#chart-hist-spend"),
+    likerRowChart = dc.rowChart("#chart-row-spenders");
+var chart = dc.lineChart("#test");
+
+
+var chart1 = dc.scatterPlot("#test1");
+var chart2 = dc.scatterPlot("#test2");
+
+//var    chart = dc.barChart("#chart-bar-chart");
+d3.csv("dataset.csv", function(error, experiments) {
+// normalize/parse data
+
+function remove_empty_bins(source_group) {
+    return {
+        all:function () {
+            return source_group.all().filter(function(d) {
+                return +d.value >= 0;
+            });
+        }
+    };
+}
+// set crossfilter
+var ndx = crossfilter(experiments),
+    typeDim  = ndx.dimension(function(d) {return d.Type;}),
+    categoryDim  = ndx.dimension(function(d) {return +d["Category"];}),
+    likePertype = typeDim.group().reduceSum(function(d) {return +d.share;}),
+    likePercategory = categoryDim.group().reduceSum(function(d) {return +d.share;}),
+    likeDim = ndx.dimension(function(d) {return d["Post Month"];}),
+    likeHist    = likeDim.group().reduceCount(function(d){return +d["Lifetime Post Total Reach"]}),
+    nonEmptyHist = remove_empty_bins(likeHist),
+    runDimension        = ndx.dimension(function(d) {return +d["Post Month"];}),
+    scatterDim = ndx.dimension(function (d) {
+        return [+d["Post Month"], +d["Post Weekday"]];
+    }),
+    speedSumGroup       = runDimension.group().reduceSum(function(d) {return +d["Lifetime Post Total Reach"];});
+
+typeRingChart
+    .width(200).height(200)
+    .dimension(typeDim)
+    .group(likePertype)
+    .innerRadius(50);
+likeHistChart
+    .width(1000).height(200)
+    .dimension(likeDim)
+    .group(nonEmptyHist)
+    .x(d3.scale.ordinal())
+    .xUnits(dc.units.ordinal)
+    .elasticX(true)
+    .elasticY(true)  .margins({ top: 10, left: 100, right: 30, bottom: 50 })
+      .renderlet(function (chart) {
+                      chart.selectAll("g.x text")
+                        .attr('dx', '-30')
+                        .attr('transform', "rotate(-90)");
+                  });
+likeHistChart.xAxis().tickFormat(function(d) {return d}); // convert back to base unit
+likeHistChart.yAxis().ticks(5);
+likerRowChart
+    .width(350).height(200)
+    .dimension(categoryDim)
+    .group(likePercategory)
+    .elasticX(true);
+
+
+
+    chart
+      .width(768)
+      .height(480)
+      .x(d3.scale.linear().domain([0,12]))
+      .renderArea(false)
+      .brushOn(true)
+      .renderDataPoints(true)
+      .clipPadding(10)
+      .yAxisLabel("Lifetime Post Total Reach")
+      .dimension(runDimension)
+      .group(speedSumGroup)
+      .margins({left:100,right:5,top:10,bottom:30});
+
+    /*dim2 = ndx1.dimension(function (d) {
+        return [+d["Post Weekday"], +d["Post Hour"]];
+    }),*/
+    group1 = scatterDim.group();
+   // group2 = dim2.group();
+chart1.width(300)
+    .height(300)
+    .x(d3.scale.linear().domain([0, 20]))
+    .yAxisLabel("Post Weekday")
+    .xAxisLabel("Post Month")
+    .clipPadding(10)
+    .dimension(scatterDim).brushOn(true)
+    .excludedOpacity(0.5)
+    .group(group1);
+
+dc.renderAll();
+});
+</script>
+
+</div>
+</body>
+</html>

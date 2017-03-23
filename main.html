@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dc.js - Series Example</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/dc.css"/>
+</head>
+<body>
+<div id="container">
+  <select id="chartOption">
+  <option value="line">Line Graph</option>
+  <option value="bar">Bar Graph</option>
+  <option value="pie">Pie Chart</option>
+  <option value="row">Row Chart</option>
+</select>
+ <button id="button1" onclick="loadAxisFilters()"> click me!</button>
+
+ <br/>
+
+ <select id="xaxisSelect">
+</select>
+<select id="yaxisSelect">
+</select>
+
+<div id="test"></div>
+
+<script type="text/javascript" src="js/d3.js"></script>
+<script type="text/javascript" src="js/crossfilter.js"></script>
+<script type="text/javascript" src="js/dc.js"></script>
+
+
+<script>
+var arr = {};
+d3.csv("dataset.csv", function(error, data) {
+        arr = d3.keys(data[0]);
+});
+var xlineStart=0;
+var xlineEnd=0;
+var ylineStart=0;
+var ylineEnd=0;
+
+d3.json("metadata_dataset1.json", function(json) {
+     xlineStart = parseInt(json.line.xaxis.trim().split('-')[0]);
+     xlineEnd = parseInt(json.line.xaxis.trim().split('-')[1]);
+     ylineStart = parseInt(json.line.yaxis.trim().split('-')[0]);
+     ylineEnd = parseInt(json.line.yaxis.trim().split('-')[1]);
+});
+
+function loadAxisFilters(){
+
+
+   for(i = ylineStart; i<ylineEnd; i++){
+        var option = document.createElement("option");
+	option.text = arr[i];
+	option.value = arr[i];
+	var select = document.getElementById("xaxisSelect");
+	select.appendChild(option);
+   }
+
+   for(i = xlineStart; i<xlineEnd; i++){
+     var option = document.createElement("option");
+	option.text = arr[i];
+	option.value = arr[i];
+	var select = document.getElementById("yaxisSelect");
+	select.appendChild(option);
+   }
+
+}
+</script>
+
+</div>
+</body>
+</html>
