@@ -30,10 +30,9 @@ var multizSel;
 var piexSel;
 var pieySel;
 
+var Weekday = ["","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]; 
 
-var Weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]; 
-
-var Months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var Months = ["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
 function initialiseGraphVariables(){
 	scatterxSel = '';
@@ -52,6 +51,9 @@ function initialiseGraphVariables(){
 	piexSel = '';
 	pieySel = '';
 }
+
+
+
 
 function renderGraph(){
 	initialiseGraphVariables();
@@ -72,6 +74,13 @@ function renderGraph(){
         alert('Please Select the z-coordinate for '+$("#graphtype option:selected").text());
         return;
       }
+    }
+
+    if( $("#graphtype option:selected").text() == 'Scatter Plot' ||  $("#graphtype option:selected").text() == 'Heat Map' || $("#graphtype option:selected").text() == 'Multi Scatter'){
+    		getTextForxyzGraphs( $("#graphtype option:selected").text(),$xcoordinateSel,$ycoordinateSel,$zcoordinateSel);
+    }else{
+    		 alert('22222');
+    		 getTextForxyGraphs( $("#graphtype option:selected").text(),$xcoordinateSel,$ycoordinateSel);
     }
 
     map[$("#graphtype option:selected").text()] = $xcoordinateSel+","+$ycoordinateSel+","+$zcoordinateSel;
@@ -106,8 +115,44 @@ function renderGraph(){
 	renderAllGraphs();
 }
 
+function getTextForxyGraphs(graphType,xCoordVal,yCoordVal){
+	$.ajax({
+      type: 'GET',
+      datatype:"jsonp",
+      crossDomain: true,
+      data: {graphType:graphType,xCoord:xCoordVal,yCoord:yCoordVal},
+      url: "http://127.0.0.1:5000/fetchxyText",
+      success: function (responseData, textStatus, jqXHR) {
+      		var dbData = JSON.parse(responseData);
+          $.each(dbData, function(key, val){
+          				var replaced = graphType.split(' ').join('_');
+                  		$('#'+replaced+'_desc').html(val.text);
+          });
+
+ 		 }
+    });	
+}
+
+
+function getTextForxyzGraphs(graphType,xCoordVal,yCoordVal,zCoordVal){
+	$.ajax({
+      type: 'GET',
+      datatype:"jsonp",
+      crossDomain: true,
+      data: {graphType:graphType,xCoord:xCoordVal,yCoord:yCoordVal,zCoord:zCoordVal},
+      url: "http://127.0.0.1:5000/fetchxyzText",
+      success: function (responseData, textStatus, jqXHR) {
+      		var dbData = JSON.parse(responseData);
+          $.each(dbData, function(key, val){
+          				var replaced = graphType.split(' ').join('_');
+                  		$('#'+replaced+'_desc').html(val.text);
+          });
+
+ 		 }
+    });	
+}
 function convertDataToStringOrNumber(d,coordinate){
-	if(isNaN(d[coordinate]))
+    if(isNaN(d[coordinate]))
       return d[coordinate];
     else
       return +d[coordinate];
@@ -250,12 +295,15 @@ function loadMultiDimensions(d,x,y){
 function loadxCoordinates(){
    var $select = $("#graphtype option:selected").text();
    var $ycoordinateSel = $('#ycoordinate');
-   $('#ycoordinate').css("disabled",true);
+     $('#ycoordinate').css("disabled",true);
+ //  $('#ycoordinateDiv').css("visibility","hidden");
+   
    var $zcoordinateSel = $('#zcoordinate');
+//   $('#zcoordinateDiv').css("visibility","hidden");
    $('#zcoordinate').prop("disabled",true);
-   $('#zcoordinate').val('');
+     $('#zcoordinate').val('');
    $('#ycoordinate').val('');
-   $('#renderGraph').prop('disabled',false);
+     $('#renderGraph').prop('disabled',false);
 
    $.ajax({
       type: 'GET',
@@ -267,7 +315,8 @@ function loadxCoordinates(){
 
           var dbData = JSON.parse(responseData);
           var $xcoordinateSel = $('#xcoordinate');
-          $('#xcoordinate').prop("disabled",false);
+        //  $('#xcoordinateDiv').css("display","block");
+         $('#xcoordinate').prop("disabled",false);
     	  $xcoordinateSel
           .find('option')
           .remove();
@@ -296,8 +345,9 @@ function loadzCoordinates(){
 
 		  var dbData = JSON.parse(responseData);
 		  var $zcoordinateSel = $('#zcoordinate');
-		  $('#zcoordinate').prop("disabled",false);
-	       $zcoordinateSel
+		//  $('#zcoordinateDiv').css("display","block");
+		 $('#zcoordinate').prop("disabled",false);
+	    	  $zcoordinateSel
 		  .find('option')
 		  .remove();
 
@@ -309,10 +359,12 @@ function loadzCoordinates(){
 	      }
 	    });
    }else{
-   		 $('#zcoordinate').prop("disabled",true);
+	  var $zcoordinateSel = $('#zcoordinate');
+	//  $('#zcoordinateDiv').css("display","none");
+	 $('#zcoordinate').prop("disabled",true);
    }
    
-   $('#renderGraph').prop('disabled',false);
+    $('#renderGraph').prop('disabled',false);
 
 
 }
@@ -332,7 +384,8 @@ function loadyCoordinates(){
 
           var dbData = JSON.parse(responseData);
           var $ycoordinateSel = $('#ycoordinate');
-          $('#ycoordinate').prop("disabled",false);
+     //     $('#ycoordinateDiv').css("display","block");
+           $('#ycoordinate').prop("disabled",false);
     	  $ycoordinateSel
           .find('option')
           .remove();

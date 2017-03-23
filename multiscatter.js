@@ -7,10 +7,10 @@ function renderMultiscatter(multiscatterchart,multixSel,multiySel,multizSel,mult
         .highlightedSize(10)
   };
   multiscatterchart
-    .width(768)
+    .width(800)
     .height(480)
     .chart(subChart)
-    .x(d3.scale.linear().domain([0,20]))
+    .x(d3.scale.linear().domain([0,25]))
     .brushOn(false)
     .yAxisLabel(multiySel)
     .xAxisLabel(multixSel)
