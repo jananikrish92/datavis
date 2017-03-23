@@ -65,7 +65,7 @@ function renderGraph(){
       alert('Please Select the y-coordinate ');
       return;
     }
-    if( $("#graphtype option:selected").text() == 'Scatter Plot' ||  $("#graphtype option:selected").text() == 'Heat Map' || $("#graphtype option:selected").text() == 'Multiscatter'){
+    if( $("#graphtype option:selected").text() == 'Scatter Plot' ||  $("#graphtype option:selected").text() == 'Heat Map' || $("#graphtype option:selected").text() == 'Multi Scatter'){
       if($zcoordinateSel == 'Select'){
         alert('Please Select the z-coordinate for '+$("#graphtype option:selected").text());
         return;
@@ -91,7 +91,7 @@ function renderGraph(){
 			heatySel = map[key].split(',')[1];
 			heatzSel = map[key].split(',')[2];		
 		}
-		else if (key === 'Multiscatter'){
+		else if (key === 'Multi Scatter'){
 		      multixSel = map[key].split(',')[0];
 		      multiySel = map[key].split(',')[1];
 		      multizSel = map[key].split(',')[2];    
