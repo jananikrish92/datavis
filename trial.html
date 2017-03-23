@@ -15,37 +15,45 @@
     <script type="text/javascript" src="js/d3.js"></script>
     <script type="text/javascript" src="js/crossfilter.js"></script>
     <script type="text/javascript" src="js/dc.js"></script>
+    <style type="text/css">
+      
+      label {
+    font-weight: normal !important;
+}
+    </style>
 </head>
 <body>
 <div class="container-fluid">
-<div class="row">
-  <div class="col-md-1"><span><label for ="graphtype"> <span>Graph Type :</span>
-  <select id="graphtype" onchange="loadxCoordinates()">
+<div class="row" style="margin-top:10px;font-weight: normal;margin-bottom: 10px;">
+  <div class="col-sm-2"><span><label for ="graphtype"> <span>Graph Type :</span>
+  <select id="graphtype" onchange="loadxCoordinates()" style="width:100px;">
     <option id="<Select>">Select</option>
   </select></label>
-  <button type="button" id="renderGraph" onClick="renderGraph()">Render</button></span>
+  </span>
   </div>
-  <div id="xcoordinateDiv" class="col-md-1" style="visibility:hidden;">
+  <div id="xcoordinateDiv" class="col-sm-2" style="visibility:hidden;">
     <label for="xcoordinate"> <span>X-axis :</span>
-    <select id="xcoordinate" onchange="loadyCoordinates()">
+    <select id="xcoordinate" onchange="loadyCoordinates()" style="width:150px;">
       <option id="<Select>" selected>Select</option>
     </select>
     </label>
   </div>
-  <div id="ycoordinateDiv"  class="col-md-1" style="visibility:hidden;">
+  <div id="ycoordinateDiv"  class="col-sm-2" style="visibility:hidden;">
     <label for="xcoordinate"> <span>Y-axis :</span>
-    <select id="ycoordinate" onchange="loadzCoordinates()">
+    <select id="ycoordinate" onchange="loadzCoordinates()" style="width:150px;">
       <option id="<Select>" selected>Select</option>
     </select>
     </label>
   </div>
-  <div id="zcoordinateDiv" class="col-md-1" style="visibility:hidden;">
+  <div id="zcoordinateDiv" class="col-sm-2" style="visibility:hidden;">
     <label for="xcoordinate"> <span>Z-axis :</span>
-    <select id="zcoordinate">
+    <select id="zcoordinate" style="width:150px;">
       <option id="<Select>" selected>Select</option>
     </select>
     </label>
   </div>
+
+  <div class="col-sm-2"><button type="button" id="renderGraph" onClick="renderGraph()" disabled="true">Render</button></div>
   </div>
   <div>
   <div id="scatter1"></div>

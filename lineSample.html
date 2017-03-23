@@ -24,8 +24,8 @@ d3.csv("dataset.csv", function(error, data) {
     x["Lifetime Post Total Reach"] = +x["Lifetime Post Total Reach"];
   });
   var ndx                 = crossfilter(data),
-      runDimension        = ndx.dimension(function(d) {return +d["Post Month"];}),
-      speedSumGroup       = runDimension.group().reduceSum(function(d) {return +d["Lifetime Post Consumers"];});
+      runDimension        = ndx.dimension(function(d) {var x = +d["Post Hour"]; alert(typeof(x)); return x;}),
+      speedSumGroup       = runDimension.group().reduceSum(function(d) {return +d["Lifetime Post Total Reach"];});
   chart
     .width(1000)
     .height(480)
@@ -33,7 +33,7 @@ d3.csv("dataset.csv", function(error, data) {
     .elasticY(true)
         .elasticX(true)
     .renderArea(false)
-    .brushOn(false)
+    .brushOn(true)
     .renderDataPoints(true)
     .clipPadding(10)
     .yAxisLabel("Lifetime Post Total Reach")
@@ -42,9 +42,7 @@ d3.csv("dataset.csv", function(error, data) {
     .group(speedSumGroup)
     .margins({left:100,right:150,top:50,bottom:70})
         .renderLabel(true)
-        .label(function (p) {
-            return p.key;
-        }) .renderTitle(true)
+        .renderTitle(true)
         .title(function (p) {
             return "Lifetime Post Total Reach :"+p.key+"\n"+"Lifetime Post Consumers:"+ p.value;     
         });

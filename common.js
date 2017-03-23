@@ -142,19 +142,22 @@ function renderAllGraphs(){
             x[piexSel] = convertDataToStringOrNumber(x,piexSel);
             x[pieySel] = convertDataToStringOrNumber(x,pieySel);
          }
+
+         //alert(piexSel+","+pieySel);
 		});
 		
 		var ndx = crossfilter(data),
-		scatterDim1 =  ndx.dimension(function(d){return loadMultiDimensions(d,scatterxSel,scatterySel);}),
-		scatterDim2 =  ndx.dimension(function(d){return loadMultiDimensions(d,scatterxSel,scatterzSel);}),
+		scatterDim1 =  ndx.dimension(function(d){return [loadDimensions(d,scatterxSel),loadDimensions(d,scatterySel)];}),
+		scatterDim2 =  ndx.dimension(function(d){return [loadDimensions(d,scatterySel),loadDimensions(d,scatterzSel)];}),
 		scatterGroup1 = scatterDim1.group(),
 		scatterGroup2 = scatterDim2.group(),
 		lineDim = ndx.dimension(function(d) {return loadDimensions(d,linexSel);}),
 		lineGroup = lineDim.group().reduceSum(function(d) {return loadDimensions(d,lineySel);}),
 		histDim = ndx.dimension(function(d) {return loadDimensions(d,histxSel);}),
     	histGroup = histDim.group().reduceCount(function(d){return loadDimensions(d,histySel);}),
-        typeDim  = ndx.dimension(function(d) {return loadDimensions(d,piexSel);}),
-        likePertype = typeDim.group().reduceSum(function(d) {return loadDimensions(d,pieySel);}),
+            typeDim  = ndx.dimension(function(d) {return d[piexSel]}),
+    likePertype = typeDim.group().reduceSum(function(d) {return +d[pieySel]}),
+
         multiscatterDim =  ndx.dimension(function(d){return loadMultiDimensions(d,multizSel,multixSel);}),
         multiscatterGroup = multiscatterDim.group().reduceSum(function(d) {return loadDimensions(d,multiySel);})
         runDim = ndx.dimension(function(d) { return [+d[heatxSel], +d[heatySel]]; }),
@@ -167,12 +170,13 @@ function renderAllGraphs(){
 			scatterChart1 = dc.scatterPlot("#scatter1");	
 			renderScatter(scatterChart1,scatterxSel,scatterySel,scatterDim1,scatterGroup1);
 		}
-		if(scatterxSel !='' && scatterzSel != ''){
+		if(scatterySel !='' && scatterzSel != ''){
 			scatterChart2 = dc.scatterPlot("#scatter2");	
-			renderScatter(scatterChart2,scatterxSel,scatterzSel,scatterDim2,scatterGroup2);	
+			renderScatter(scatterChart2,scatterySel,scatterzSel,scatterDim2,scatterGroup2);	
 		}
 		if(linexSel!='' && lineySel !=''){
 			lineGraph = dc.lineChart("#line");
+			//alert(typeof(linexSel));
 			renderLine(lineGraph,linexSel,lineySel,lineDim,lineGroup);
 		}
 		if(histxSel != '' && histySel != ''){
@@ -200,10 +204,10 @@ function renderAllGraphs(){
 	    .calculateColorDomain();
 	  
 	    }
-	    if(piexSel != '' && pieySel != '')
-	    {
-	      typeRingChart   = dc.pieChart("#chart-ring-year")
-	      renderPieChart(typeRingChart,piexSel,pieySel,typeDim,likePertype)
+	    if(piexSel != '' && pieySel != ''){
+	   
+	     typeRingChart   = dc.pieChart("#chart-ring-year");
+	     renderPieChart(typeRingChart,piexSel,pieySel,typeDim,likePertype);
 	    }
 	  
     	dc.renderAll();
@@ -217,7 +221,7 @@ function loadDimensions(d,x){
 var m;
 	if(x != ''){
      m = convertDataToStringOrNumber(d,x);
-		return [m]
+		return m
 	}else{
 		return;	
 	}
@@ -235,7 +239,7 @@ function loadMultiDimensions(d,x,y){
             n = d[y];
       else
             n = +d[y];
-  		return[m,n]
+  		return [m,n];
 	}else{
 		return []	
 	}
@@ -243,6 +247,13 @@ function loadMultiDimensions(d,x,y){
 
 function loadxCoordinates(){
    var $select = $("#graphtype option:selected").text();
+   var $ycoordinateSel = $('#ycoordinate');
+   $('#ycoordinateDiv').css("visibility","hidden");
+   
+   var $zcoordinateSel = $('#zcoordinate');
+   $('#zcoordinateDiv').css("visibility","hidden");
+     $('#renderGraph').prop('disabled',false);
+
    $.ajax({
       type: 'GET',
       datatype:"jsonp",
@@ -253,7 +264,7 @@ function loadxCoordinates(){
 
           var dbData = JSON.parse(responseData);
           var $xcoordinateSel = $('#xcoordinate');
-          $('#xcoordinateDiv').css("display","block");
+        //  $('#xcoordinateDiv').css("display","block");
           $('#xcoordinateDiv').css("visibility","visible");
     	  $xcoordinateSel
           .find('option')
@@ -283,7 +294,7 @@ function loadzCoordinates(){
 
 		  var dbData = JSON.parse(responseData);
 		  var $zcoordinateSel = $('#zcoordinate');
-		  $('#zcoordinateDiv').css("display","block");
+		//  $('#zcoordinateDiv').css("display","block");
 		  $('#zcoordinateDiv').css("visibility","visible");
 	    	  $zcoordinateSel
 		  .find('option')
@@ -298,12 +309,17 @@ function loadzCoordinates(){
 	    });
    }else{
 	  var $zcoordinateSel = $('#zcoordinate');
-	  $('#zcoordinateDiv').css("display","none");
+	//  $('#zcoordinateDiv').css("display","none");
 	  $('#zcoordinateDiv').css("visibility","hidden");
    }
+   
+    $('#renderGraph').prop('disabled',false);
+
+
 }
 
 function loadyCoordinates(){
+
    var $select = $("#graphtype option:selected").text();
    var $xCoordVal = $("#xcoordinate option:selected").text();
 
@@ -317,7 +333,7 @@ function loadyCoordinates(){
 
           var dbData = JSON.parse(responseData);
           var $ycoordinateSel = $('#ycoordinate');
-          $('#ycoordinateDiv').css("display","block");
+     //     $('#ycoordinateDiv').css("display","block");
           $('#ycoordinateDiv').css("visibility","visible");
     	  $ycoordinateSel
           .find('option')

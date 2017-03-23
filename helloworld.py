@@ -13,7 +13,7 @@ def fetchGraph():
 	cursor = db.graphType.find({},{"_id":0})
 	return dumps(cursor)
 
-@app.route('/setup',methods=['POST'])
+@app.route('/setup',methods=['POST','GET'])
 def setUp():
 	client = MongoClient()
 	db = client.facebook
@@ -93,12 +93,154 @@ def setUp():
 	  {
 	    "x": "Post Weekday",
 	    "graph": "Line"
+	  },
+	   {
+	    "x": "Type",
+	    "graph": "Pie"
+	  },
+	   {
+	    "x": "Category",
+	    "graph": "Pie"
+	  },
+	   {
+	    "x": "Post Month",
+	    "graph": "Pie"
+	  },
+	   {
+	    "x": "Post Weekday",
+	    "graph": "Pie"
 	  }
 	])
 
 
 
 	result = db.ycoord.insert([{ 
+		  "x":"Post Weekday",
+		  "y":"share",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Post Weekday",
+		  "y":"Lifetime Post Total Reach",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Post Weekday",
+		  "y":"Lifetime Post Consumers",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Post Weekday",
+		  "y":"Lifetime Post Consumptions",
+		  "graph":"Pie"
+		},
+		{ 
+		  "x":"Post Weekday",
+		  "y":"Lifetime Engaged Users",
+		  "graph":"Pie"
+		},
+		{ 
+		  "x":"Post Weekday",
+		  "y":"Lifetime Post Total Impressions",
+		  "graph":"Pie"
+		},
+		{ 
+		  "x":"Post Weekday",
+		  "y":"Total Interactions",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Post Month",
+		  "y":"share",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Post Month",
+		  "y":"Lifetime Post Total Reach",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Post Month",
+		  "y":"Lifetime Post Consumers",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Post Month",
+		  "y":"Lifetime Post Consumptions",
+		  "graph":"Pie"
+		},
+		{ 
+		  "x":"Post Month",
+		  "y":"Lifetime Engaged Users",
+		  "graph":"Pie"
+		},
+		{ 
+		  "x":"Post Month",
+		  "y":"Lifetime Post Total Impressions",
+		  "graph":"Pie"
+		},
+		{ 
+		  "x":"Post Month",
+		  "y":"Total Interactions",
+		  "graph":"Pie"
+		},
+		{ 
+		  "x":"Category",
+		  "y":"share",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Category",
+		  "y":"Lifetime Post Total Reach",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Category",
+		  "y":"Lifetime Post Consumers",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Category",
+		  "y":"Lifetime Post Consumptions",
+		  "graph":"Pie"
+		},
+		{ 
+		  "x":"Category",
+		  "y":"Lifetime Engaged Users",
+		  "graph":"Pie"
+		},
+		{ 
+		  "x":"Category",
+		  "y":"Lifetime Post Total Impressions",
+		  "graph":"Pie"
+		},
+		{ 
+		  "x":"Category",
+		  "y":"Total Interactions",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Type",
+		  "y":"share",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Type",
+		  "y":"Lifetime Post Total Reach",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Type",
+		  "y":"Lifetime Post Consumers",
+		  "graph":"Pie"
+		},{ 
+		  "x":"Type",
+		  "y":"Lifetime Post Consumptions",
+		  "graph":"Pie"
+		},
+		{ 
+		  "x":"Type",
+		  "y":"Lifetime Engaged Users",
+		  "graph":"Pie"
+		},
+		{ 
+		  "x":"Type",
+		  "y":"Lifetime Post Total Impressions",
+		  "graph":"Pie"
+		},
+		{ 
+		  "x":"Type",
+		  "y":"Total Interactions",
+		  "graph":"Pie"
+		},
+		{ 
 		  "x":"Lifetime Post Total Reach",
 		  "y":"Lifetime Post Total Impressions",
 		  "graph":"Line"
@@ -1030,7 +1172,6 @@ def fetchxCoordinates():
 	client = MongoClient()
 	db = client.facebook
 	graphTypeVal = request.args.get('graphType')
-	print graphTypeVal
 	cursor = db.xcoord.find({"graph":graphTypeVal},{"_id":0})
 	return dumps(cursor)
 
@@ -1041,8 +1182,7 @@ def fetchyCoordinates():
 	db = client.facebook
 	graphTypeVal = request.args.get('graphType')
 	xCordVal = request.args.get('xCoord')
- 	
-	print xCordVal;
+ 
 	cursor = db.ycoord.find({"graph":graphTypeVal,"x":xCordVal},{"_id":0})
 	return dumps(cursor)
 
