@@ -83,10 +83,6 @@ def setUp():
 	    "graph": "Histogram"
 	  },
 	  {
-	    "x": "Lifetime Post Total Reach",
-	    "graph": "Line"
-	  },
-	  {
 	    "x": "Post Hour",
 	    "graph": "Line"
 	  },
