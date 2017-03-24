@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title><meta charset="utf-8"/>
+	<link rel="stylesheet"  type="text/css" href="css/keen-dashboard.css">   
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/dc.css"/>
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> <script src="common.js"></script>
+	<script src="scatter.js"></script>
+	<script src="line.js"></script>
+	<script src="histogram.js"></script>
+	<script src="multiscatter.js"></script>
+	<script src="piechart.js"></script>
+	<script type="text/javascript" src="js/d3.js"></script>
+	<script type="text/javascript" src="js/crossfilter.js"></script>
+	<script type="text/javascript" src="js/dc.js"></script>
+	<style type="text/css">
+		label {
+			font-weight: normal !important;
+		}
+	</style>
+
+</head>
+<body class="application">
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-8"><p class="navbar-brand">Facebook Dashboard</p></div>
+     <div class="col-md-4" align="right"><a class="navbar-brand" href="about.html">About</a></div>
+     </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+	<div class="row" style="margin-top:10px;font-weight: normal;margin-bottom: 10px;">
+		  <div class="col-sm-2"><label for ="graphtype"> <span>Graph Type :</span></label>
+			  <select id="graphtype" onchange="loadxCoordinates()" style="width:100px;">
+			    <option id="<Select>">Select</option>
+			  </select>
+		  </div>
+		  <div id="xcoordinateDiv" class="col-sm-2">
+		    <label for="xcoordinate"> <span>X-axis :</span></label>
+		    <select id="xcoordinate" onchange="loadyCoordinates()" style="width:150px;" disabled="true">
+		      <option id="<Select>" selected>Select</option>
+		    </select>
+		  </div>
+		  <div id="ycoordinateDiv"  class="col-sm-2">
+		    <label for="xcoordinate"> <span>Y-axis :</span></label>
+		    <select id="ycoordinate" onchange="loadzCoordinates()" style="width:150px;" disabled="true">
+		      <option id="<Select>" selected>Select</option>
+		    </select>
+		  </div>
+		  <div id="zcoordinateDiv" class="col-sm-2" >
+		    <label for="xcoordinate"> <span>Z-axis :</span></label>
+		    <select id="zcoordinate" style="width:150px;" disabled="true">
+		      <option id="<Select>" selected>Select</option>
+		    </select>
+		  </div>
+		  <div class="col-sm-2"><button type="button" id="renderGraph" onClick="renderGraph()" disabled="true">Render</button></div>
+  	</div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="row">
+	   <div  class="col-sm-12">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                <div id="Scatter_Plot_desc"></div>
+              </div>
+              <div class="chart-stage">
+		<div id="scatter1"></div>
+		<div id="scatter2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+			<div id="Line_desc"></div>
+              </div>
+              <div class="chart-stage">
+                	<div id="line"></div>
+              </div>
+            </div>
+          </div>
+	  <div class="col-sm-12">
+		<div class="chart-wrapper">
+		  <div class="chart-title">
+		    <div id="Pie_desc"></div>
+		  </div>
+		  <div class="chart-stage">
+		    <div id="chart-ring-year"></div>
+		  </div>
+		</div>
+	  </div>
+         
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+           <div id="Histogram_desc"></div>
+          </div>
+          <div class="chart-stage">
+            <div id="HistChart"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+           <div id="Multi_Scatter_desc"></div>
+          </div>
+          <div class="chart-stage">
+            <div id="multiscatter"></div>
+          </div>
+        </div>
+      </div>
+       <div class="col-sm-8">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+		<div id="Heat_Map_desc"></div>
+              </div>
+              <div class="chart-stage">
+                <div id="heatMapChart"></div>
+              </div>
+            </div>
+          </div>
+      <!-- Metric 2 -->
+      
+      <!-- Metric 2 -->
+
+    </div>
+
+  </div>
+  </div>
+  <script type="text/javascript">
+   $( document ).ready(function() {
+	$.ajax({
+	type: 'GET',
+	datatype:"jsonp",
+	crossDomain: true,
+	url: "http://127.0.0.1:5000/fetchGraph",
+	success: function (responseData, textStatus, jqXHR) {  
+		var dbData = JSON.parse(responseData);
+		var $select = $('#graphtype');
+		$.each(dbData, function(key, val){
+		 $select.append('<option id="' + val.graph + '">' + val.graph + '</option>');
+		});
+	}
+	});   
+   });
+  
+  </script>
+</body>
+</html>
+

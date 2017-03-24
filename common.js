@@ -56,7 +56,7 @@ function initialiseGraphVariables(){
 
 
 function renderGraph(){
-	initialiseGraphVariables();
+initialiseGraphVariables();
     var $xcoordinateSel = $("#xcoordinate option:selected").text();
     var $ycoordinateSel = $("#ycoordinate option:selected").text();
     var $zcoordinateSel = $("#zcoordinate option:selected").text();
@@ -77,10 +77,9 @@ function renderGraph(){
     }
 
     if( $("#graphtype option:selected").text() == 'Scatter Plot' ||  $("#graphtype option:selected").text() == 'Heat Map' || $("#graphtype option:selected").text() == 'Multi Scatter'){
-    		getTextForxyzGraphs( $("#graphtype option:selected").text(),$xcoordinateSel,$ycoordinateSel,$zcoordinateSel);
+    	getTextForxyzGraphs( $("#graphtype option:selected").text(),$xcoordinateSel,$ycoordinateSel,$zcoordinateSel);
     }else{
-    		 alert('22222');
-    		 getTextForxyGraphs( $("#graphtype option:selected").text(),$xcoordinateSel,$ycoordinateSel);
+    	getTextForxyGraphs( $("#graphtype option:selected").text(),$xcoordinateSel,$ycoordinateSel);
     }
 
     map[$("#graphtype option:selected").text()] = $xcoordinateSel+","+$ycoordinateSel+","+$zcoordinateSel;

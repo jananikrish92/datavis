@@ -2,7 +2,7 @@ from flask import Flask,request
 from pymongo import MongoClient
 from bson.json_util import dumps
 from flask_cors import CORS, cross_origin
-
+# -*- coding: utf-8 -*-
 app = Flask(__name__)
 CORS(app)
 
@@ -316,7 +316,7 @@ def setUp():
 		{ "x":"Post Weekday",
 		  "y":"Total Interactions",
 		  "graph":"Line",
-		  "text":"Line chart depicts the sum of “likes,” “comments,” and “shares” of the post per post day"
+		  "text":"Line chart depicts the sum of likes, comments, and shares of the post per post day"
 		},
 		{ "x":"Post Hour",
 		  "y":"Lifetime Post Total Reach",
@@ -366,7 +366,7 @@ def setUp():
 		{ "x":"Post Hour",
 		  "y":"Total Interactions",
 		  "graph":"Line",
-		  "text":"Line chart depicts the sum of “likes,” “comments,” and “shares” of the post per post hour"
+		  "text":"Line chart depicts the sum of likes, comments, and shares of the post per post hour"
 		},
 		{ "x":"Post Month",
 		  "y":"Lifetime Post Total Reach",
@@ -416,7 +416,7 @@ def setUp():
 		{ "x":"Post Month",
 		  "y":"Total Interactions",
 		  "graph":"Line",
-		  "text":"Line chart depicts the sum of “likes,” “comments,” and “shares” of the post per Post Month"
+		  "text":"Line chart depicts the sum of likes, comments, and shares of the post per Post Month"
 		},
 		{ "x":"Category",
 		  "y":"Lifetime Post Total Reach",
@@ -466,7 +466,7 @@ def setUp():
 		{ "x":"Category",
 		  "y":"Total Interactions",
 		  "graph":"Histogram",
-		  "text":"The histogram depict the sum of “likes,” “comments,” and “shares” of the post per category."
+		  "text":"The histogram depict the sum of likes, comments, and shares of the post per category."
 		},
 		{ "x":"Category",
 		  "y":"share",
@@ -520,7 +520,7 @@ def setUp():
 		{ "x":"Paid",
 		  "y":"Total Interactions",
 		  "graph":"Histogram",
-		  "text":"The histogram depict the amount paid for the sum of “likes,” “comments,” and “shares” of the post."
+		  "text":"The histogram depict the amount paid for the sum of likes, comments, and shares of the post."
 		},
 		{ "x":"Paid",
 		  "y":"share",
@@ -575,7 +575,7 @@ def setUp():
 		{ "x":"Post Hour",
 		  "y":"Total Interactions",
 		  "graph":"Histogram",
-		  "text":"The histogram depict the sum of “likes,” “comments,” and “shares” of the post per Post Hour."
+		  "text":"The histogram depict the sum of likes, comments, and shares of the post per Post Hour."
 		},
 		{ "x":"Post Hour",
 		  "y":"share",
@@ -630,7 +630,7 @@ def setUp():
 		{ "x":"Post Month",
 		  "y":"Total Interactions",
 		  "graph":"Histogram",
-		  "text":"The histogram depict the sum of “likes,” “comments,” and “shares” of the post per Post Month."
+		  "text":"The histogram depict the sum of likes, comments, and shares of the post per Post Month."
 		},
 		{ "x":"Post Month",
 		  "y":"share",
@@ -685,7 +685,7 @@ def setUp():
 		{ "x":"Post Weekday",
 		  "y":"Total Interactions",
 		  "graph":"Histogram",
-		  "text":"The histogram depict the sum of “likes,” “comments,” and “shares” of the post per Post Weekday."
+		  "text":"The histogram depict the sum of likes, comments, and shares of the post per Post Weekday."
 		},
 		{ "x":"Post Weekday",
 		  "y":"share",
@@ -740,7 +740,7 @@ def setUp():
 		{ "x":"Type",
 		  "y":"Total Interactions",
 		  "graph":"Histogram",
-		  "text":"The histogram depict the sum of “likes,” “comments,” and “shares” of the post per Type."
+		  "text":"The histogram depict the sum of likes, comments, and shares of the post per Type."
 		},
 		{ "x":"Type",
 		  "y":"share",
