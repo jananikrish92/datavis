@@ -16,10 +16,10 @@ function renderHistogram(HistChart,x,y,dim,group){
         .dimension(dim)
         .group(remove_empty_bins(group))
         .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
+        .xUnits(dc.units.ordinal).xAxisLabel(x).yAxisLabel(y)
         .elasticX(true)
         .elasticY(true) 
-        .margins({ top: 10, left: 70, right: 30, bottom: 50 })
+        .margins({ top: 10, left: 70, right: 30, bottom: 70 })
         .renderlet(function (chart) {
                           chart.selectAll("g.x text")
                             .attr('dx', '-30')

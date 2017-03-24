@@ -164,7 +164,7 @@ def setUp():
 		  "text":"Pie Chart depicts the number of unique users who saw your Page post on each month."
 		},{ 
 		  "x":"Post Month",
-		  "y":"Lifetime Post Consumers ",
+		  "y":"Lifetime Post Consumers",
 		  "graph":"Pie",
 		  "text":"Pie Chart depicts the number of unique users who clicked anywhere in your post on each month."
 		},{ 
@@ -1380,4 +1380,4 @@ def fetchxyzText():
 
 
 if __name__ == '__main__':
-   app.run()
+      app.run(host="128.119.243.168",port=18000,debug="true",threaded="true")

@@ -1,95 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>dc.js - Series Example</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/dc.css"/>
+  <title>Dashboard</title><meta charset="utf-8"/>
+	<link rel="stylesheet"  type="text/css" href="css/keen-dashboard.css">   
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/dc.css"/>
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> <script src="common.js"></script>
+	<script src="scatter.js"></script>
+	<script src="line.js"></script>
+	<script src="histogram.js"></script>
+	<script src="multiscatter.js"></script>
+	<script src="piechart.js"></script>
+	<script type="text/javascript" src="js/d3.js"></script>
+	<script type="text/javascript" src="js/crossfilter.js"></script>
+	<script type="text/javascript" src="js/dc.js"></script>
+	<style type="text/css">
+		label {
+			font-weight: normal !important;
+		}
+	</style>
+
 </head>
-<body>
-<div id="container">
-<div id="test"></div>
+<body class="application">
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-8"><p class="navbar-brand">Facebook Dashboard</p></div>
+     <div class="col-md-4" align="right"><a class="navbar-brand" href="about.html">About</a></div>
+     </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+	<div class="row" style="margin-top:10px;font-weight: normal;margin-bottom: 10px;">
+		  <div class="col-sm-2"><label for ="graphtype"> <span>Graph Type :</span></label>
+			  <select id="graphtype" onchange="loadxCoordinates()" style="width:100px;">
+			    <option id="<Select>">Select</option>
+			  </select>
+		  </div>
+		  <div id="xcoordinateDiv" class="col-sm-2">
+		    <label for="xcoordinate"> <span>X-axis :</span></label>
+		    <select id="xcoordinate" onchange="loadyCoordinates()" style="width:150px;" disabled="true">
+		      <option id="<Select>" selected>Select</option>
+		    </select>
+		  </div>
+		  <div id="ycoordinateDiv"  class="col-sm-2">
+		    <label for="xcoordinate"> <span>Y-axis :</span></label>
+		    <select id="ycoordinate" onchange="loadzCoordinates()" style="width:150px;" disabled="true">
+		      <option id="<Select>" selected>Select</option>
+		    </select>
+		  </div>
+		  <div id="zcoordinateDiv" class="col-sm-2" >
+		    <label for="xcoordinate"> <span>Z-axis :</span></label>
+		    <select id="zcoordinate" style="width:150px;" disabled="true">
+		      <option id="<Select>" selected>Select</option>
+		    </select>
+		  </div>
+		  <div class="col-sm-2"><button type="button" id="renderGraph" onClick="renderGraph()" disabled="true">Render</button></div>
+  	</div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="row">
+	   <div  class="col-sm-12">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                <div id="Scatter_Plot_desc"></div>
+              </div>
+              <div class="chart-stage">
+		<div id="scatter1"></div>
+		<div id="scatter2"></div>
+              </div>
+            </div>
+          </div>
 
-<script type="text/javascript" src="js/d3.js"></script>
-<script type="text/javascript" src="js/crossfilter.js"></script>
-<script type="text/javascript" src="js/dc.js"></script>
-<p>Click the button to trigger a function that will output "Hello World" in a p element with id="demo".</p>
-<input type="text" id="input1" value="x-axis"/>
-<input type="text" id="input2" value="y-axis"/>
-<button onclick="myFunction()">Click me</button>
+      <div class="col-sm-12">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+           <div id="Multi_Scatter_desc"></div>
+          </div>
+          <div class="chart-stage">
+            <div id="multiscatter"></div>
+          </div>
+        </div>
+      </div>
+       <div class="col-sm-12">
+		<div class="chart-wrapper">
+		  <div class="chart-title">
+		    <div id="Pie_desc"></div>
+		  </div>
+		  <div class="chart-stage">
+		    <div id="chart-ring-year"></div>
+		  </div>
+		</div>
+	  </div>
+         
+        </div>
+      </div>
 
-<p id="demo"></p>
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+           <div id="Histogram_desc"></div>
+          </div>
+          <div class="chart-stage">
+            <div id="HistChart"></div>
+          </div>
+        </div>
+      </div>
+  <div class="col-sm-8">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+		<div id="Heat_Map_desc"></div>
+              </div>
+              <div class="chart-stage">
+                <div id="heatMapChart"></div>
+              </div>
+            </div>
+          </div>
+                    <div class="col-sm-8">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+			<div id="Line_desc"></div>
+              </div>
+              <div class="chart-stage">
+                	<div id="line"></div>
+              </div>
+            </div>
+          </div>
 
-<script>
-function myFunction() {
-    alert('hi');
-    var xAttribute = document.getElementById("input1");
-    var yAttribute = document.getElementById("input2");
-    alert(xAttribute.value+" "+yAttribute.value);
-    var chart = dc.lineChart("#test");
-    d3.csv("dataset.csv", function(error, data) {
-  /*    data.forEach(function(x) {
-        x["Lifetime Post Total Reach"] = +x["Lifetime Post Total Reach"];
-      });*/
-      var ndx                 = crossfilter(data),
-          runDimension        = ndx.dimension(function(d) {return +d[xAttribute.value];}),
-          speedSumGroup       = runDimension.group().reduceSum(function(d) {return +d[yAttribute.value];});
-      chart
-        .width(768)
-        .height(480)
-        .x(d3.scale.linear().domain([0,12]))
-        .renderArea(false)
-        .brushOn(false)
-        .renderDataPoints(true)
-        .clipPadding(10)
-        .yAxisLabel(yAttribute.value)
-        .dimension(runDimension)
-        .group(speedSumGroup)
-        .margins({left:100,right:5,top:10,bottom:30});
+      <!-- Metric 2 -->
+      
+      <!-- Metric 2 -->
 
-    	chart.render();
-    });
+    </div>
 
-}
-</script>
-<!--
-<script type="text/javascript">
-
-var test = function(){
-  alert('hi');
-}
-function funcEvent()
-{
-
-  alert("eneter");
-  /*var chart = dc.barChart("#test");
-  var ndx = crossfilter(data);
-d3.csv("dataset.csv",function(data){
-var xAttribute = document.getElementById("input1");
-var yAttribute = document.getElementById("input2");
-var runDimension        = ndx.dimension(function(d) {return +d.xAttribute;}),
-var speedSumGroup       = runDimension.group().reduceSum(function(d) {return +d.yAttribute;});
-chart
-  .width(768)
-  .height(480)
-  .x(d3.scale.linear().domain([0,12]))
-  .renderArea(false)
-  .brushOn(true)
-  .renderDataPoints(true)
-  .clipPadding(10)
-  .yAxisLabel(yAttribute)
-  .dimension(runDimension)
-  .group(speedSumGroup)
-  .margins({left:100,right:5,top:10,bottom:30});
-  dc.renderAll();
-  */
-
-});
-}
-</script>
-<input type="text" id="input1" value="x-axis"/>
-<input type="text" id="input2" value="y-axis"/>
-<button id="button1" onclick="javascript:test();">renderAll</button>-->
-</div>
+  </div>
+  </div>
+  <script type="text/javascript">
+   $( document ).ready(function() {
+	$.ajax({
+	type: 'GET',
+	datatype:"jsonp",
+	crossDomain: true,
+	url: "http://128.119.243.168:18000/fetchGraph",
+	success: function (responseData, textStatus, jqXHR) {  
+		var dbData = JSON.parse(responseData);
+		var $select = $('#graphtype');
+		$.each(dbData, function(key, val){
+		 $select.append('<option id="' + val.graph + '">' + val.graph + '</option>');
+		});
+	}
+	});   
+   });
+  
+  </script>
 </body>
 </html>
+

@@ -14,8 +14,14 @@
      </div>
     </div>
   </div>
-  <div>
- 	
+  <div style="margin-top:100px;font-weight: normal;margin-bottom: 10px;font-size:20px;font-style:normal;">
+ 	This webpage gives visualizations of the facebook dataset.The attribute described above are depicted in this webpage as visual elements like(scatter plot,histogram,pie chart, multi scatter plot,heat map,line chart).
+<br/><br/>
+The user can chose any graph from the graph type drop down option and also can select the available x , y, z(for grouping over) coordinates.Every visualization interacts with one another and each visualization has the description mentioned above it.
+<br/><br/>
+This webpage is hosted using dataset from csv that is loaded into mongoDb server(runs on port:27017) with tables containing the possible combination of the attributes that can be possible for each graph type. In order to project the data as visualization, a web service is setup using python flask(runs on port:18000) which sends the request and obtains the response from mongoDb server.
+<br/><br/>
+The front end has been built with d3.js,dc.js,crossfilter.js,bootstrap.css,keen.css and HTML5.
 
   </div>
  </body>

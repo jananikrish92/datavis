@@ -120,7 +120,7 @@ function getTextForxyGraphs(graphType,xCoordVal,yCoordVal){
       datatype:"jsonp",
       crossDomain: true,
       data: {graphType:graphType,xCoord:xCoordVal,yCoord:yCoordVal},
-      url: "http://127.0.0.1:5000/fetchxyText",
+      url: "http://128.119.243.168:18000/fetchxyText",
       success: function (responseData, textStatus, jqXHR) {
       		var dbData = JSON.parse(responseData);
           $.each(dbData, function(key, val){
@@ -139,7 +139,7 @@ function getTextForxyzGraphs(graphType,xCoordVal,yCoordVal,zCoordVal){
       datatype:"jsonp",
       crossDomain: true,
       data: {graphType:graphType,xCoord:xCoordVal,yCoord:yCoordVal,zCoord:zCoordVal},
-      url: "http://127.0.0.1:5000/fetchxyzText",
+      url: "http://128.119.243.168:18000/fetchxyzText",
       success: function (responseData, textStatus, jqXHR) {
       		var dbData = JSON.parse(responseData);
           $.each(dbData, function(key, val){
@@ -309,7 +309,7 @@ function loadxCoordinates(){
       datatype:"jsonp",
       crossDomain: true,
       data: {graphType:$select},
-      url: "http://127.0.0.1:5000/fetchxCoordinates",
+      url: "http://128.119.243.168:18000/fetchxCoordinates",
       success: function (responseData, textStatus, jqXHR) {
 
           var dbData = JSON.parse(responseData);
@@ -339,7 +339,7 @@ function loadzCoordinates(){
 	      datatype:"jsonp",
 	      crossDomain: true,
 	      data: {graphType:$select,xCoord:$xCoordVal,yCoord:$yCoordVal},
-	      url: "http://localhost:5000/fetchzCoordinates",
+	      url: "http://128.119.243.168:18000/fetchzCoordinates",
 	      success: function (responseData, textStatus, jqXHR) {
 
 		  var dbData = JSON.parse(responseData);
@@ -378,7 +378,7 @@ function loadyCoordinates(){
       datatype:"jsonp",
       crossDomain: true,
       data: {graphType:$select,xCoord:$xCoordVal},
-      url: "http://localhost:5000/fetchyCoordinates",
+      url: "http://128.119.243.168:18000/fetchyCoordinates",
       success: function (responseData, textStatus, jqXHR) {
 
           var dbData = JSON.parse(responseData);
